@@ -34,3 +34,10 @@ export const check = (point: (number | number)[]) => {
   });
   return result;
 };
+
+export const isIn = (point: (number | number)[], country: string) => {
+  let item = data.find((element) => element.name.toUpperCase() === country.toUpperCase() || element.code.toUpperCase() === country.toUpperCase());
+  if (!item?.name) return false;
+  let inside = isPointInPolynomial(point, item?.geoJson);
+  return inside;
+};
